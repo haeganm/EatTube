@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "EatTube",
   "version": "0.1.0",
-  "description": "Spin a casino-style picker for a long YouTube recommendation to eat with.",
+  "description": "Spin a casino-style picker for a 20-60 minute YouTube recommendation to eat with.",
   "icons": {
     "16": "assets/icon-16.png",
     "32": "assets/icon-32.png",

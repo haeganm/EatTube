@@ -1,12 +1,23 @@
 # EatTube
 
+![EatTube icon](assets/icon-128.png)
+
 EatTube is a free Chrome/Edge extension that opens a casino-style picker on YouTube and sends you to a recommended video that is 20 to 60 minutes long.
 
-EatTube is not affiliated with YouTube, Google, or Alphabet. It is a cosmetic local browser extension and does not provide real-money gambling, prizes, or betting.
+EatTube is not affiliated with YouTube, Google, or Alphabet. It is a local browser extension and does not provide real-money gambling, prizes, or betting.
+
+## Features
+
+- Picks from YouTube recommendations already loaded in the browser.
+- Briefly scrolls under the popup while spinning so YouTube can lazy-load more recommendations.
+- Filters for videos from 20 minutes up to, but not including, 1 hour.
+- Skips Shorts and obvious watched/progress cards.
+- Prefers videos with visible `1M+` view counts, then falls back to any valid 20-60 minute candidate.
+- Uses no backend, API key, analytics, tracking, or Chrome permissions.
 
 ## Privacy
 
-EatTube has no backend, analytics, tracking, account login, or API key. It reads the YouTube page already loaded in your browser to find candidate videos, then stores only temporary per-tab state in `sessionStorage`.
+EatTube does not collect, sell, share, or transmit personal data. It reads visible YouTube page content locally to choose a video and uses `sessionStorage` only for temporary per-tab state.
 
 See [PRIVACY.md](./PRIVACY.md).
 
@@ -20,15 +31,6 @@ See [PRIVACY.md](./PRIVACY.md).
 
 After changing files, click the reload button on the EatTube extension card.
 
-## How It Picks
-
-- Reads YouTube recommendations already loaded on the page.
-- Briefly scrolls under the popup when spinning so YouTube can lazy-load more recommendations.
-- Requires a visible duration from 20 minutes up to, but not including, 1 hour.
-- Skips Shorts and obvious watched/progress cards.
-- Prefers videos with visible view counts of `1M+`.
-- Falls back to any valid 20-60 minute video if no `1M+` candidate exists.
-
 ## Test
 
 ```powershell
@@ -37,3 +39,7 @@ node --check .\content.js
 ```
 
 Then reload the unpacked extension and test directly on YouTube.
+
+## License
+
+[MIT](./LICENSE)
