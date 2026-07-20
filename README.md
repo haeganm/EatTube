@@ -34,7 +34,6 @@ EatTube is not affiliated with YouTube, Google, or Alphabet. It does not provide
 ## Test
 
 ```powershell
-node .\content.js
 node --check .\content.js
 ```
 
