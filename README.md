@@ -6,6 +6,8 @@ EatTube is a lightweight Chrome/Edge extension that opens a casino-style picker 
 
 It is intentionally simple: no backend, no account login, no analytics, no API key, and no Chrome permissions.
 
+<p align="center"><img src="assets/eattube-picker.png" alt="EatTube picker overlay on YouTube" width="480"></p>
+
 ## What It Does
 
 - Shows an in-page EatTube popup when YouTube opens.
