@@ -37,6 +37,7 @@ EatTube is not affiliated with YouTube, Google, or Alphabet. It does not provide
 
 ```powershell
 node --check .\content.js
+node -e "require('./content.js'); console.log('self-test passed')"
 ```
 
 Then reload the unpacked extension and test directly on YouTube.

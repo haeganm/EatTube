@@ -69,10 +69,6 @@
     }
   }
 
-  function isWatchUrl(href) {
-    return Boolean(getWatchUrl(href));
-  }
-
   function assetUrl(path) {
     return typeof chrome !== "undefined" && chrome.runtime?.getURL ? chrome.runtime.getURL(path) : "";
   }
@@ -305,8 +301,8 @@
     assert(parseViews("1.2M views") === 1200000, "million views");
     assert(parseViews("999K views") === 999000, "thousand views");
     assert(getWatchUrl("https://www.youtube.com/watch?v=abc&t=1s").href === "https://www.youtube.com/watch?v=abc", "canonical watch url");
-    assert(isWatchUrl("https://www.youtube.com/watch?v=abc"), "watch url");
-    assert(!isWatchUrl("https://www.youtube.com/shorts/abc"), "shorts url");
+    assert(Boolean(getWatchUrl("https://www.youtube.com/watch?v=abc")), "watch url");
+    assert(getWatchUrl("https://www.youtube.com/shorts/abc") === null, "shorts url");
     assert(thumbnailUrlForId("abc") === "https://i.ytimg.com/vi/abc/hqdefault.jpg", "thumbnail fallback");
     assert(chooseVideo([{ title: "low", views: 5 }, { title: "high", views: PREFERRED_VIEWS }]).title === "high", "prefers 1M+ views");
 
@@ -317,7 +313,7 @@
 
   if (typeof module !== "undefined" && module.exports) {
     selfTest();
-    module.exports = { parseDuration, parseViews, getWatchUrl, isWatchUrl, thumbnailUrlForId, chooseVideo };
+    module.exports = { parseDuration, parseViews, getWatchUrl, thumbnailUrlForId, chooseVideo };
     return;
   }
 
