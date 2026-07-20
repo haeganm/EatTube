@@ -197,7 +197,7 @@
   function renderCandidates(reel, videos, offset) {
     const sample = videos.length ? videos : [{ title: "Ready when you are", thumbnail: "" }];
 
-    reel.innerHTML = Array.from({ length: 3 }, (_, index) => {
+    reel.innerHTML = Array.from({ length: Math.min(3, sample.length) }, (_, index) => {
       const video = sample[(offset + index) % sample.length];
       const image = video.thumbnail ? `<img src="${escapeHtml(video.thumbnail)}" alt="">` : `<div class="ytmr-empty-thumb"></div>`;
       return `<div class="ytmr-reel-item">${image}<span>${escapeHtml(video.title)}</span></div>`;
@@ -309,6 +309,10 @@
     assert(!isWatchUrl("https://www.youtube.com/shorts/abc"), "shorts url");
     assert(thumbnailUrlForId("abc") === "https://i.ytimg.com/vi/abc/hqdefault.jpg", "thumbnail fallback");
     assert(chooseVideo([{ title: "low", views: 5 }, { title: "high", views: PREFERRED_VIEWS }]).title === "high", "prefers 1M+ views");
+
+    const fakeReel = { innerHTML: "" };
+    renderCandidates(fakeReel, [{ title: "a", thumbnail: "" }, { title: "b", thumbnail: "" }], 0);
+    assert((fakeReel.innerHTML.match(/ytmr-reel-item/g) || []).length === 2, "reel never repeats a video");
   }
 
   if (typeof module !== "undefined" && module.exports) {
